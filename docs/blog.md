@@ -1,8 +1,25 @@
 # Catching the cookies your website sets before anyone clicks Accept
 
-A cookie banner tells visitors they have a choice. Whether the site actually respects that choice is a separate question, and the banner cannot answer it. Many sites load analytics and advertising scripts the moment a page opens and show the banner afterwards. I built Cookie Consent Auditor, an open source Python tool, to check this automatically.
+Almost every website in the EU greets you with a cookie banner, and most of us do the same thing: click Accept and carry on. We rarely know what we just agreed to, or whether the site waited for our answer before it started tracking us.
 
-## Why this matters
+## What you agree to when you click Accept
+
+Accepting usually switches on analytics, advertising and social media cookies, and many of them come from third party companies, not the site you are visiting.
+
+- **Identifiers:** these cookies hold an ID that lets a company recognise your browser on every visit, and with third party cookies, across different websites.
+- **Profiling:** combined over time, that ID builds a profile of what you read, search for and buy, which is then used to target advertising.
+- **Sharing:** the data can pass to advertising and data partners. Some consent dialogs list hundreds of them.
+- **More code on the page:** each tracking vendor is another company whose script runs inside the page, which widens the attack surface of the site and of your browser session.
+
+Under EU rules, none of this should start until you have agreed, and saying no should be as easy as saying yes.
+
+## When the choice is not a choice
+
+There is a second problem that most visitors never see. Some sites set those cookies before you click anything. At that point the banner is decoration. Accept and Reject change nothing, because the tracking has already started.
+
+I wanted a way to measure this, so I built Cookie Consent Auditor, an open source Python tool that checks it automatically.
+
+## Why this matters for website owners
 
 EU rules on cookies (Article 5(3) of the ePrivacy Directive, with GDPR defining what valid consent means) require consent before a site stores non-essential cookies on a visitor's device. Only strictly necessary cookies, such as session, security and load balancing cookies, are exempt.
 
@@ -114,14 +131,30 @@ The project is on GitHub: [github.com/shreeshk07/cookie-consent-auditor](https:/
 
 ---
 
-## LinkedIn post (short version)
+## LinkedIn post
 
-Most cookie banners tell visitors they have a choice. The harder question is whether the site waits for that choice before setting analytics and advertising cookies.
+Most websites in the EU ask for cookie consent, and most of us just click Accept without knowing what we are agreeing to.
 
-I built Cookie Consent Auditor to check it automatically. It loads a page in a headless browser, never clicks the banner, records every cookie set before consent, and classifies each one against 104 known tracker vendors. Each page gets a PASS, REVIEW or FAIL verdict, plus HTML, Markdown and JSON reports.
+Accepting usually allows analytics, advertising and social media trackers, many of them from third party companies you have never heard of. They recognise your browser across visits and across sites, and build a profile of what you read, search for and buy. Some consent dialogs list hundreds of partners.
 
-It works as a CI gate too. The exit code is 1 when a page fails, so a new tracker appearing before consent can fail a build.
+There is a second problem most people never see. Some sites set those cookies before you click anything. At that point the banner is decoration: Accept and Reject change nothing, and under EU rules that is a compliance gap.
 
-Built with Python and Playwright, with 53 tests and a local demo site so you can try it in five minutes. Link to the code and the full write up in the comments.
+I wanted to measure it, so I built Cookie Consent Auditor, an open source tool in Python and Playwright.
+
+What it does:
+1. Opens each page in a fresh headless browser and never touches the consent banner
+2. Records every cookie set before consent
+3. Classifies each one against 104 known tracker vendors (analytics, advertising, social, essential)
+4. Gives each page a PASS, REVIEW or FAIL verdict, with HTML, Markdown and JSON reports
+
+What I saw while testing: one news homepage I scanned from a cloud server set 273 cookies before any interaction, 252 of them from third parties. Results depend on region, so I treat that as a test run, not a verdict on the site.
+
+It also works as a CI gate. Exit code 1 means a page failed, so a new tracker that appears before consent can fail a build instead of reaching production.
+
+It ships with a demo site, 53 tests and a full README, so you can run it in about five minutes.
+
+Code: github.com/shreeshk07/cookie-consent-auditor
+
+If you work in security, privacy or web development, I would like to hear what you would add. My next ideas are clicking Accept and Reject and comparing the cookie sets, and checking localStorage.
 
 #CyberSecurity #Privacy #GDPR #Python #OpenSource
