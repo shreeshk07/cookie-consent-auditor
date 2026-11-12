@@ -110,7 +110,7 @@ Only scan sites you own or have permission to test.
 
 ## Get the code
 
-The project is on GitHub: **[add your repository link here]**. The README covers every option, the exit codes and how to add custom signatures. Feedback and signature contributions are welcome.
+The project is on GitHub: [github.com/shreeshk07/cookie-consent-auditor](https://github.com/shreeshk07/cookie-consent-auditor). The README covers every option, the exit codes and how to add custom signatures. Feedback and signature contributions are welcome.
 
 ---
 
