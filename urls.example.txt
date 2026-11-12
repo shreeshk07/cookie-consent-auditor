@@ -1,0 +1,5 @@
+# One URL or domain per line. Lines starting with # are ignored.
+# Only list sites you own or have permission to test.
+http://127.0.0.1:8765/bad
+http://127.0.0.1:8765/good
+http://127.0.0.1:8765/mixed

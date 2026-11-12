@@ -1,0 +1,47 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>LinkedIn card</title>
+<style>
+:root{--bg:#f4f1ea;--ink:#111827;--muted:#5b6475;--card:#ffffff;--line:#ddd7ca;--accent:#0f766e;--fail:#c81e2d;--warn:#a16207;--ok:#15803d}
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1200px;height:627px;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;overflow:hidden;position:relative;padding:48px 56px}
+.top{display:flex;justify-content:space-between;align-items:center}
+.kicker{font-size:15px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+h1{font-family:"Inter Display",Inter,sans-serif;font-size:58px;line-height:1.08;font-weight:800;letter-spacing:-.025em;margin-top:22px}
+.pill{font-size:15px;font-weight:600;color:var(--muted);border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:8px 16px;white-space:nowrap}
+.steps{display:flex;gap:18px;margin-top:38px}
+.step{flex:1;background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:22px 22px 26px;position:relative}
+.n{width:34px;height:34px;border-radius:50%;background:var(--ink);color:#fff;font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.step h3{font-size:21px;font-weight:700;line-height:1.2;margin-bottom:8px}
+.step p{font-size:16px;line-height:1.45;color:var(--muted)}
+.step:not(:last-child)::after{content:"";position:absolute;right:-19px;top:50%;width:20px;height:2px;background:var(--ink);opacity:.35}
+.verdicts{display:flex;gap:14px;margin-top:32px;align-items:center}
+.vlabel{font-size:15px;font-weight:600;color:var(--muted);margin-right:4px}
+.v{font-weight:800;font-size:15px;letter-spacing:.06em;padding:8px 16px;border-radius:8px;color:#fff;display:flex;gap:10px;align-items:center}
+.v span{font-weight:500;letter-spacing:0;opacity:.92}
+.pass{background:var(--ok)}.review{background:var(--warn)}.fail{background:var(--fail)}
+.bottom{position:absolute;left:56px;right:56px;bottom:34px;display:flex;justify-content:space-between;align-items:center;border-top:1.5px solid var(--line);padding-top:16px;font-size:15px;color:var(--muted)}
+.bottom b{color:var(--ink)}
+.stats{display:flex;gap:28px}
+</style></head><body>
+<div class="top">
+  <div class="kicker">Cookie Consent Auditor</div>
+  <span class="pill">Python · Playwright · Open source</span>
+</div>
+<h1>Catch trackers that fire before consent</h1>
+<div class="steps">
+  <div class="step"><div class="n">1</div><h3>Fresh headless browser</h3><p>New Chromium context per URL. No cookies, no storage.</p></div>
+  <div class="step"><div class="n">2</div><h3>Load, never click</h3><p>Waits for scripts to settle. The consent banner is never touched.</p></div>
+  <div class="step"><div class="n">3</div><h3>Capture and classify</h3><p>Every cookie checked against known tracker signatures.</p></div>
+  <div class="step"><div class="n">4</div><h3>Report and gate CI</h3><p>HTML, Markdown and JSON reports. Exit code 1 on failure.</p></div>
+</div>
+<div class="verdicts">
+  <span class="vlabel">Verdict per page</span>
+  <div class="v pass">PASS <span>essential only</span></div>
+  <div class="v review">REVIEW <span>needs a human check</span></div>
+  <div class="v fail">FAIL <span>tracker before consent</span></div>
+</div>
+<div class="bottom">
+  <div class="stats"><span><b>104</b> tracker vendors</span><span><b>3</b> report formats</span><span><b>53</b> tests</span></div>
+  <span>Only scan sites you own or have permission to test</span>
+</div>
+</body></html>

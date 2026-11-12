@@ -1,0 +1,64 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Medium header</title>
+<style>
+:root{--bg:#0b1220;--panel:#111a2e;--line:#22304d;--text:#eef2f8;--muted:#9fb0cc;--accent:#2dd4bf;--fail:#f4525f;--ok:#34d399;--warn:#f5b942}
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1600px;height:900px;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;overflow:hidden;position:relative}
+.grid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;opacity:.35;mask-image:radial-gradient(ellipse at 70% 50%,#000 10%,transparent 75%)}
+.glow{position:absolute;right:-120px;top:-80px;width:760px;height:760px;background:radial-gradient(circle,rgba(244,82,95,.22),transparent 65%)}
+.wrap{position:relative;display:flex;height:100%;padding:84px 88px;gap:64px;align-items:center}
+.left{flex:0 0 600px}
+.eyebrow{display:flex;gap:12px;margin-bottom:34px}
+.tag{font-size:19px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);border:1.5px solid rgba(45,212,191,.45);padding:7px 14px;border-radius:8px}
+h1{font-family:"Inter Display",Inter,sans-serif;font-size:74px;line-height:1.05;font-weight:800;letter-spacing:-.025em}
+h1 em{font-style:normal;color:var(--fail)}
+.sub{margin-top:30px;font-size:27px;line-height:1.45;color:var(--muted);max-width:600px}
+.brand{margin-top:48px;font-size:24px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:14px}
+.dot{width:14px;height:14px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 6px rgba(45,212,191,.18)}
+.right{flex:1}
+.card{background:var(--panel);border:1.5px solid var(--line);border-radius:18px;box-shadow:0 30px 80px rgba(0,0,0,.45);overflow:hidden}
+.bar{display:flex;align-items:center;gap:10px;padding:16px 22px;border-bottom:1.5px solid var(--line);font-family:"DejaVu Sans Mono",monospace;font-size:17px;color:var(--muted)}
+.lights i{display:inline-block;width:12px;height:12px;border-radius:50%;background:#34415f;margin-right:7px}
+.head{display:flex;align-items:center;justify-content:space-between;padding:26px 28px 14px}
+.url{font-family:"DejaVu Sans Mono",monospace;font-size:20px;color:var(--text)}
+.badge{background:var(--fail);color:#fff;font-weight:800;font-size:26px;padding:8px 22px;border-radius:10px;letter-spacing:.06em}
+.note{padding:0 28px 18px;font-size:19px;color:var(--muted)}
+table{width:100%;border-collapse:collapse}
+td{padding:14px 18px;border-top:1.5px solid var(--line);font-size:21px}
+.mono{font-family:"DejaVu Sans Mono",monospace;font-size:20px}
+.cat{font-size:15px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:5px 10px;border-radius:6px}
+.adv{background:rgba(244,82,95,.16);color:#ff8791}
+.ana{background:rgba(245,185,66,.16);color:#f8cd77}
+.ess{background:rgba(52,211,153,.16);color:#6ee7b7}
+.v{color:var(--muted);white-space:nowrap}
+.sev{font-weight:700;text-align:right}
+.hi{color:#ff8791}.me{color:#f8cd77}.okc{color:#6ee7b7}
+.foot{display:flex;justify-content:space-between;padding:18px 28px;border-top:1.5px solid var(--line);font-size:19px;color:var(--muted);background:rgba(255,255,255,.02)}
+.foot b{color:var(--text)}
+</style></head><body>
+<div class="grid"></div><div class="glow"></div>
+<div class="wrap">
+  <div class="left">
+    <div class="eyebrow"><span class="tag">Open source</span><span class="tag">Python</span><span class="tag">Playwright</span></div>
+    <h1>Which cookies does your site set <em>before</em> anyone clicks Accept?</h1>
+    <p class="sub">Cookie Consent Auditor loads your pages in a headless browser, captures every cookie written before consent, and flags the trackers.</p>
+    <div class="brand"><span class="dot"></span>Cookie Consent Auditor</div>
+  </div>
+  <div class="right">
+    <div class="card">
+      <div class="bar"><span class="lights"><i></i><i></i><i></i></span>cookie-auditor</div>
+      <div class="head"><span class="url">http://127.0.0.1:8765/bad</span><span class="badge">FAIL</span></div>
+      <div class="note">Cookies present before any consent interaction</div>
+      <table>
+        <tr><td><span class="cat adv">advertising</span></td><td class="mono">_fbp</td><td class="v">Meta</td><td class="sev hi">high</td></tr>
+        <tr><td><span class="cat adv">advertising</span></td><td class="mono">_gcl_au</td><td class="v">Google Ads</td><td class="sev hi">high</td></tr>
+        <tr><td><span class="cat ana">analytics</span></td><td class="mono">_ga</td><td class="v">Google Analytics</td><td class="sev me">medium</td></tr>
+        <tr><td><span class="cat ana">analytics</span></td><td class="mono">_ga_ABC123XYZ</td><td class="v">Google Analytics 4</td><td class="sev me">medium</td></tr>
+        <tr><td><span class="cat ana">analytics</span></td><td class="mono">_gid</td><td class="v">Google Analytics</td><td class="sev me">medium</td></tr>
+        <tr><td><span class="cat ess">essential</span></td><td class="mono">PHPSESSID</td><td class="v">PHP session</td><td class="sev okc">ok</td></tr>
+      </table>
+      <div class="foot"><span><b>5 violations</b> found</span><span>Banner never clicked</span></div>
+    </div>
+  </div>
+</div>
+</body></html>

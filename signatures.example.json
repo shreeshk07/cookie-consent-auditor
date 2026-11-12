@@ -1,0 +1,11 @@
+{
+  "essential_cookies": [
+    { "pattern": "app_state", "vendor": "MyApp" }
+  ],
+  "tracker_cookies": [
+    { "pattern": "acme_uid", "vendor": "Acme", "category": "advertising" }
+  ],
+  "tracker_domains": [
+    { "domain": "tracking.acme.example", "vendor": "Acme", "category": "advertising" }
+  ]
+}
